@@ -14,3 +14,8 @@ The Village
 The Town
 The Valley
 The Oasis
+The Storm
+The Ocean
+The Sea
+The Sky
+The Earth
