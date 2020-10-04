@@ -1,0 +1,10 @@
+origin: Dwarf
+construction:
+  - forename: required
+  - surname: optional
+name_banks:
+  - Dwarf
+
+# To be expanded.
+# TODO: Allow dwarves to have titles, etc.
+# TODO: Probably a way to generate names instead of a list.
