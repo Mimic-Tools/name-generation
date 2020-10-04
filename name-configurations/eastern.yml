@@ -1,0 +1,14 @@
+origin: Eastern
+construction:
+  - surname: required
+  - forename: required
+name_banks:
+  - Cambodia
+  - Chinese
+  - Hungary
+  - India
+  - Japanese
+  - Korea
+  - Vietnamese
+
+# Needs more information

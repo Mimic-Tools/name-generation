@@ -1,0 +1,11 @@
+origin: Singular
+construction:
+  - position: optional
+  - given_name: 
+      - forename
+      - surname
+name_banks:
+  - Western.yml
+  - Eastern.yml
+
+# e.g. Lady Gaga, Dr. Who

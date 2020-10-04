@@ -1,0 +1,19 @@
+origin: Western
+construction:
+  - prefix: optional
+  - forename: required
+  - middle: optional
+  - christian: optional
+  - surname: required
+  - suffix: optional
+name_banks:
+  - American
+  - British
+  - French
+  - Gaelic
+  - Germanic
+  - Italian
+  - Portugese
+  - Spanish
+  - Ancient_Roman
+  - Ancient_Egyptian
