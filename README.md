@@ -1,4 +1,4 @@
-# name-generation
+# Mimic Tools' Character Name Generation
 A tool to generate character names for your RPGs, Novel or any sort of character creation.
 
 ## Current Status
