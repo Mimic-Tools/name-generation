@@ -7,6 +7,7 @@ def setup_args():
     parser.add_argument("origin", type=str, choices=[
         "human",
         "dwarf",
+        "elf",
         "any"
     ], default="any")
     parser.add_argument("gender", type=str, choices=[
