@@ -3,7 +3,7 @@ construction:
   - forename: required
   - surname: optional
 name_banks:
-  - Dwarf
+  - Elf
 
 # To be expanded.
 # TODO: Allow elves to have titles, etc.
