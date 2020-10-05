@@ -1,0 +1,10 @@
+origin: Elf
+construction:
+  - forename: required
+  - surname: optional
+name_banks:
+  - Dwarf
+
+# To be expanded.
+# TODO: Allow elves to have titles, etc.
+# TODO: Probably a way to generate names instead of a list.
