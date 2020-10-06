@@ -32,7 +32,7 @@ def produce(grammar, symbol):
             words.extend(produce(grammar, sym))
     return words
 
-G = resolve_grammar(open("dwarf.grammar").read())
+G = resolve_grammar(open("name-configurations/dwarf.grammar").read())
 grammar = CFG.fromstring(G)    
 
 parser = ChartParser(grammar)
