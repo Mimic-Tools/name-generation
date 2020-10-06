@@ -1,86 +1,42 @@
-import argparse
-import yaml
-import random
+from nltk import CFG
+from nltk import ChartParser # parse_cfg, ChartParser
+from random import choice
+import re
 
-def setup_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("origin", type=str, choices=[
-        "human",
-        "dwarf",
-        "elf",
-        "any"
-    ], default="any")
-    parser.add_argument("gender", type=str, choices=[
-        "male",
-        "female",
-        "neutral",
-        "any"
-    ], default="any")
-    args = parser.parse_args()
-    return args
+def resolve_grammar(G):
+    def file_contents(s):
+        filename = f"name-segments/{s.group(1)}"
+        try:
+            terms = open(filename).readlines()
+            print(terms)
+            s = ""
+            for t in terms:
+                t = t.replace("\n","")
+                s += f"| '{t}' "       
+        except FileNotFoundError:
+            print("Warn: File doesn't exist:", filename)
+            s = ""
+        return s
 
+    G = re.sub("\[\'([a-zA-Z\-\.]*)\'\]", file_contents, G)
+    return G
 
-class NameBank():
-    def __init__(self, nametype, origin="", gender=""):
-        prepender = lambda x: f"-{x}" if x != "" else ""
-        self.origin = prepender(origin).lower()
-        self.gender = prepender(gender).lower()
-        self.filenames = [f"name-segments/{nametype}{self.origin}.txt"]
-        if gender != "":
-            self.filenames.append(f"name-segments/{nametype}{self.origin}{self.gender}.txt")
+def produce(grammar, symbol):
+    words = []
+    productions = grammar.productions(lhs = symbol)
+    production = choice(productions)
+    for sym in production.rhs():
+        if isinstance(sym, str):
+            words.append(sym)
+        else:
+            words.extend(produce(grammar, sym))
+    return words
 
-    def generate(self):
-        # TODO: Actually randomize this
-        for fn in self.filenames:        
-            try:
-                with open(fn, "r") as f:
-                    lines = f.read().splitlines()
-                    name = random.choice(lines)
-                    return name
-            except FileNotFoundError:
-                print(f"Warn: No such file: {fn}")
-        print("Error: No valid names in bank")
-        quit()
+G = resolve_grammar(open("name-configurations/dwarf.grammar").read())
+grammar = CFG.fromstring(G)    
 
+parser = ChartParser(grammar)
 
-class Generator():
-
-    def __init__(self, args):
-        # TODO: Actually randomize these
-        if args.origin == "any":
-            args.origin = "dwarf" 
-        if args.gender == "any":
-            args.gender = ""
-
-        self.origin = args.origin
-        self.gender = args.gender
-
-        self.filename = "name-configurations/"+args.origin.lower()+".yml"
-        with open(self.filename) as f:
-            constructor = yaml.load(f, Loader=yaml.FullLoader)
-            self.origin = constructor["origin"]
-            # TODO: handle aliasing / choice
-            self.construction = constructor["construction"]
-            self.banks = constructor["name_banks"]
-
-
-
-    def generate(self):
-        name = ""
-        for x in self.construction:
-            key = list(x.keys())[0]
-            b = self.banks[0]
-            nb = NameBank(key, origin=self.origin, gender=self.gender)
-
-            n = nb.generate()
-            name += n + " "
-        return name.rstrip()
-
-def main():
-    a = setup_args()
-    ng = Generator(a)
-    print("Suggested Name: ", ng.generate())
-
-
-if __name__ == '__main__':
-    main()
+gr = parser.grammar()
+tokens = produce(gr, gr.start())
+print(''.join(tokens))
