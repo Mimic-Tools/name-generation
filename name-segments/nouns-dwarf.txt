@@ -15,3 +15,8 @@ shovel
 spade
 pick
 cart
+mountain
+stone
+boulder
+cave
+mine
