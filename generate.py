@@ -63,7 +63,7 @@ class FileFetcher():
         pt = []
         for g in ges:
             g = f"-{g}" if g != "" else g
-            pt.append(f'positions{g}.txt')
+            pt.append(f'prefixes/positions{g}.txt')
          
         return pt
 
@@ -95,13 +95,13 @@ class Grammar:
         self.obj["TITLE"] = positions
        
         # Postfix
-        origin = config.namebank.name.lower()
+        origin = config.origin.name.lower()
                
         self.obj["POST"] = ["SPC", "OF", "SPC", "WHERE"]
         if optional:
             self.obj["POST"].append(None)
         # TODO: Allow multiple origins
-        self.obj["WHERE"] = [f"['location.txt']", f"['location-{origin}.txt']",]
+        self.obj["WHERE"] = [f"['postfixes/{origin}.txt']",]
      
     def setNameOrder(self, order):
         if order == Name.NameOrder.Western:
@@ -119,13 +119,14 @@ class Grammar:
 
     def getNamesFromBank(self, config, name_type):
         ges = self.ff.get_gender_endings(config)
-        origin = config.namebank.name.lower()
+        namebank = config.namebank.name.lower()
         name_type = name_type.name.upper()
         
         pt = []
         for g in ges:
             g = f"-{g}" if g != "" else g
-            pt.append(f'{name_type}-{origin}{g}.txt')
+            # TODO: s shouldnt be there.
+            pt.append(f'{name_type.lower()}s/{namebank}{g}.txt')
         self.obj[name_type] = [pt]
         
     def constructName(self, config, name_type):
@@ -138,26 +139,20 @@ class Grammar:
         self.buildNounBank(config)
         
     def buildAdjBank(self, config):
-        ges = self.ff.get_gender_endings(config, always_neutral=True)
         origin = config.origin.name.lower()
         
         pt = []
         # TODO: Dodginess/Alignment. John Bloodsword seems more evil than John Goldheart
-        for g in ges:
-            g = f"-{g}" if g != "" else g
-            pt.append(f"['adj-{origin}{g}.txt']")
+        pt.append(f"['adjectives/{origin}.txt']")
          
         self.obj["ADJ"] = pt
         
     def buildNounBank(self, config):
-        ges = self.ff.get_gender_endings(config, always_neutral=True)
         origin = config.origin.name.lower()
         
         pt = []
         # TODO: Dodginess/Alignment. John Poisonblood seems more evil than John Goldheart
-        for g in ges:
-            g = f"-{g}" if g != "" else g
-            pt.append(f"['noun-{origin}{g}.txt']")
+        pt.append(f"['nouns/{origin}.txt']")
         self.obj["NOUN"] = pt
         
         
@@ -217,7 +212,7 @@ def resolve_grammar(G):
             s = ""
         return s
 
-    G = re.sub("\[\'([a-zA-Z\-\.]*)\'\]", file_contents, G)
+    G = re.sub("\[\'([a-zA-Z\-\.\/]*)\'\]", file_contents, G)
     return G
 
 def generate_name(G):
