@@ -4,3 +4,4 @@ King
 Prince
 Sir
 Vicount
+Lord
