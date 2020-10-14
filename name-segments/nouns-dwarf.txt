@@ -10,4 +10,13 @@ club
 bow
 staff
 lance
-trident
+beard
+shovel
+spade
+pick
+cart
+mountain
+stone
+boulder
+cave
+mine

@@ -2,5 +2,5 @@ S -> FORENAME SPC SURNAME
 FORENAME -> 'Aldrick' | 'Heja' ['forename-dwarf-male.txt'] ['forename-dwarf-female.txt'] ['forename-dwarf.txt']
 SURNAME -> ADJ NOUN
 SPC -> ' '
-ADJ -> 'Frost' | 'Fast' | 'Strong' | 'Red' | 'Gold'
-NOUN -> 'beard' | 'hammer' | 'axe' | 'helm' 
+ADJ -> ['adj-dwarf.txt'] ['adj-good-dwarf.txt'] 
+NOUN -> ['noun-dwarf.txt']

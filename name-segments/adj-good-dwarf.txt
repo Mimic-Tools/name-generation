@@ -1,0 +1,6 @@
+gold
+true
+bushy
+strong
+fast
+silver
