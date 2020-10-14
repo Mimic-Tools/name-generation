@@ -2,11 +2,11 @@ S -> PRE CORE POST
 SPC -> ' ' 
 OF -> 'o' 'f' 
 PRE -> TITLE SPC 
-TITLE -> ['positions-male.txt'] 
+TITLE -> ['prefixes/positions-male.txt'] 
 POST -> SPC OF SPC WHERE 
-WHERE -> ['location.txt'] ['location-dwarf.txt'] 
+WHERE -> ['postfixes/mountain.txt'] 
 CORE -> FORENAME SPC SURNAME 
-FORENAME -> ['FORENAME-dwarf-male.txt'] 
+FORENAME -> ['forenames/dwarf-male.txt'] 
 SURNAME -> ADJ NOUN 
-ADJ -> ['adj-mountain-male.txt'] ['adj-mountain.txt'] 
-NOUN -> ['noun-mountain-male.txt'] ['noun-mountain.txt'] 
+ADJ -> ['adjectives/mountain.txt'] 
+NOUN -> ['nouns/mountain.txt'] 
