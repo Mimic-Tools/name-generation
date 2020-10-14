@@ -1,6 +1,12 @@
-S -> FORENAME SPC SURNAME
-FORENAME -> 'Aldrick' | 'Heja' ['forename-dwarf-male.txt'] ['forename-dwarf-female.txt'] ['forename-dwarf.txt']
+S -> PRE CORE POST
+
+PRE -> ['positions-male.txt'] ['positions-female.txt'] ['positions.txt'] | 
+
+CORE -> FORENAME SPC SURNAME
+FORENAME -> ['forename-dwarf-male.txt'] ['forename-dwarf-female.txt'] ['forename-dwarf.txt']
 SURNAME -> ADJ NOUN
 SPC -> ' '
 ADJ -> ['adj-dwarf.txt'] ['adj-good-dwarf.txt'] 
 NOUN -> ['noun-dwarf.txt']
+
+POST -> OF ['locations.txt] |
