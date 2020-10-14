@@ -1,12 +1,18 @@
 S -> PRE CORE POST
 
-PRE -> ['positions-male.txt'] ['positions-female.txt'] ['positions.txt'] | 
+PRE -> TITLE SPC |
+TITLE -> ['positions-male.txt'] ['positions-female.txt'] ['positions.txt'] 
 
 CORE -> FORENAME SPC SURNAME
 FORENAME -> ['forename-dwarf-male.txt'] ['forename-dwarf-female.txt'] ['forename-dwarf.txt']
 SURNAME -> ADJ NOUN
-SPC -> ' '
-ADJ -> ['adj-dwarf.txt'] ['adj-good-dwarf.txt'] 
-NOUN -> ['noun-dwarf.txt']
 
-POST -> OF ['locations.txt] |
+POST -> POF WHERE | 
+POF -> SPC OF SPC
+WHERE -> ['locations.txt']
+
+ADJ -> ['adj-dwarf.txt'] ['adj-good-dwarf.txt'] 
+NOUN -> ['nouns-dwarf.txt']
+
+SPC -> ' '
+OF -> 'o' 'f'

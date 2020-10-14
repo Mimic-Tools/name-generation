@@ -8,11 +8,13 @@ def resolve_grammar(G):
         filename = f"name-segments/{s.group(1)}"
         try:
             terms = open(filename).readlines()
-            print(terms)
             s = ""
-            for t in terms:
+            for i, t in enumerate(terms):
                 t = t.replace("\n","")
-                s += f"| '{t}' "       
+				# Allow Commenting
+                if "#" not in t:
+                    seperator = "|" if i > 0 else ""
+                    s += f"{seperator} '{t}' "       
         except FileNotFoundError:
             print("Warn: File doesn't exist:", filename)
             s = ""
@@ -39,4 +41,6 @@ parser = ChartParser(grammar)
 
 gr = parser.grammar()
 tokens = produce(gr, gr.start())
-print(''.join(tokens))
+name = ''.join(tokens)
+
+print(name.title())
