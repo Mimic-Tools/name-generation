@@ -1,0 +1,4 @@
+gold
+true
+bushy
+strong
