@@ -1,3 +1,5 @@
 black
 brown
 red
+frost
+snow
