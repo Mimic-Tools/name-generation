@@ -1,14 +1,12 @@
 lake
 pond
 ocean
+sea
 basin
 flood
 hail
 cove
 beach
-ice
-snow
-sleet
 brine
 brook
 dew
