@@ -37,3 +37,8 @@ Finally comply with our file naming and style conventions.
 - Python3
 - NLTK
   > pip3 install nltk
+  
+## Running the Name Generation
+
+We're currently trying to make this more accessible, but for now the way to run is:
+> python3 generate.py
