@@ -1,0 +1,149 @@
+*, 
+*::after, 
+*::before {
+    box-sizing: border-box;
+    font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+.github-corner:hover .octo-arm {
+    animation:octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave{
+    0%, 100% {
+        transform:rotate(0);
+    } 
+
+    20%, 60% { 
+        transform:rotate(-25deg);
+    }
+    
+    40%, 80% {
+        transform:rotate(10deg);
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation:none;
+    } 
+    
+    .github-corner .octo-arm {
+        animation:octocat-wave 560ms ease-in-out;
+    }
+}
+
+.container {
+	max-width: 1200px;
+	padding: 0 15px 50px 15px;
+	margin: 0 auto;
+}
+
+.header-title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #444;
+    text-align: center;
+    margin-top: 60px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.form-generation {
+    padding: 10px 30px;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 70%;
+    border: solid 4px #444;
+    border-radius: 10px;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-item-title {
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.25rem + 2px);
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn:focus, .btn:hover {
+    text-decoration: none;
+}
+
+.btn:focus, .btn:hover {
+    text-decoration: none;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #444;
+    border-color: #333;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #555;
+}
+
+.result-title {
+    font-style: italic;
+}
