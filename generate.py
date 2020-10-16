@@ -3,28 +3,36 @@ from nltk import ChartParser # parse_cfg, ChartParser
 from random import choice
 import re
 from enum import Enum, auto
+from argparse import ArgumentParser
 
+class EnumAutoName(Enum):
+    # An enum where auto() will default to the enum name
+    def _generate_next_value_(name, start, count, last_values):
+        return name
+            
 class Name:
-    class NameOrder(Enum):
-        Easter = auto()
+    class NameOrder(EnumAutoName):
+        Eastern = auto()
         Forename_Only = auto()
         Surname_Only = auto()
-        Western = auto()
+        Western = "Western"
         
-    class NameBank(Enum):
+    class NameBank(EnumAutoName):
         American = auto()
         Dwarf = auto()
+        Elf = auto()
         French = auto()
         Gaelic = auto()
         Germanic = auto()
         Orc = auto()
         Portuguese = auto()
+        Triton = auto()
         
-    class NameType(Enum):
+    class NameType(EnumAutoName):
         Forename = auto()
         Surname = auto()
         
-    class Origin(Enum):
+    class Origin(EnumAutoName):
         Aquatic = auto()
         Desert = auto()
         Mountain = auto()
@@ -55,6 +63,7 @@ class FileFetcher():
             e.append("")
         if len(e) == 0:
             print("No Gender Selection. Defaulting to gender neutral")
+            config.gender_neutral = True
             e.append("")
         return e
     
@@ -113,7 +122,7 @@ class Grammar:
         elif order == Name.NameOrder.Surname_Only:
             self.obj["CORE"] = ["FORENAME"]
         else:
-            print("Unimplemented Name Order: ", config.order, ". Defaulting to Western")
+            print("Unimplemented Name Order: ", order, ". Defaulting to Western")
             self.setNameOrder(Name.NameOrder.Western)
 
 
@@ -237,17 +246,38 @@ def produce(grammar, symbol):
     return words
 
 
-config = Name()
-config.has_position = True
-config.origin = Name.Origin.Mountain
-config.namebank = Name.NameBank.Dwarf
-config.order = Name.NameOrder.Western
-config.gender_male = True
-grammar_file = define_grammar(config)
+def generate(args):
+    config = Name()
+    config.has_position = True
+    config.origin = args.origin
+    config.namebank = args.namebank
+    config.order = args.order
+    config.gender_male = args.gender_male
+    config.gender_female = args.gender_female
+    config.gender_neutral = args.gender_neutral
+    grammar_file = define_grammar(config)
 
-G = resolve_grammar(open(grammar_file).read())
-name = generate_name(G)
+    G = resolve_grammar(open(grammar_file).read())
+    name = generate_name(G)
 
-print("Your Character:", name)
+    print("Your Character:", name)
 
-#print(G)
+def parse_args():
+    ap = ArgumentParser(description="Generate a character name")
+
+    # Gender
+    ap.add_argument('--gender-male', action="store_true")
+    ap.add_argument('--gender-female', action="store_true")
+    ap.add_argument('--gender-neutral', action="store_true")
+    
+    # Origins
+    ap.add_argument('--order', type=Name.NameOrder, choices=list(Name.NameOrder), nargs="?", default=Name.NameOrder.Western)
+    ap.add_argument('--origin', type=Name.Origin, choices=list(Name.Origin), nargs="?", default=Name.Origin.Mountain)
+    ap.add_argument('--namebank', type=Name.NameBank, choices=Name.NameBank, nargs="?", default=Name.NameBank.Dwarf)
+    args = ap.parse_args()
+    return args
+    
+
+if __name__ == "__main__":
+    a = parse_args()
+    generate(a)
