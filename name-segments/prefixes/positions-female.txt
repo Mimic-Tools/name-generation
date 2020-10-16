@@ -5,3 +5,6 @@ Madam
 Princess
 Queen
 Vicountess
+Sister
+Mother
+Daughter
