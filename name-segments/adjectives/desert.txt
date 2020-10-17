@@ -1,6 +1,10 @@
 strong
-creative
-mysterious
+hardy
+empty
+mystic
 silent
-magnificient
+dry
+vast
+arid
+hot
 quiet
