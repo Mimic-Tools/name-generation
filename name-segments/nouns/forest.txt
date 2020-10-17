@@ -35,3 +35,7 @@ berry
 snake
 lion
 algae
+honey
+rubber
+conifer
+fern
