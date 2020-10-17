@@ -5,5 +5,5 @@ coin
 cash
 market
 city
-Castle
-Dragon
+castle
+dragon
