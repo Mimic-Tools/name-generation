@@ -9,3 +9,5 @@ bushy
 strong
 fast
 silver
+hard
+tough
