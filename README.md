@@ -3,16 +3,21 @@ A tool to generate character names for your RPGs, Novel or any sort of character
 
 ## Current Status
 
-Our "Dwarf" name generator is undergoing development, which will pave the way for the other generators. These changes should eventually help:
-- Less disparity between what races/origins can have certain titles
-- Removing ties to race and focussing on origin/heritage.
-> example: if your tiefling character was brought up by dwarves in a cave, it's more likely they'd have a dwarven inspired name than one from the hells.
-- More re-use of name components.
-> No more putting "John" into all the databanks.
+We are currently expanding both the variety and complexity of our names.
+- We are encouraging submissions for additional names and words, to be added for selection
+- We have released a v0.1 of the name generator and are working on an easier interface for people to use.
+
+## Features
+- Python Interface
+- Male/Female/Neutral name selection (Multiple Selection)
+- Titles
+- Origin based names NOT racial based names
+- Multiple Name Order conventions
 
 ## Seeking Contribution
 
 We are participating in #hacktoberfest and welcome (meaningful) contribution.
+Check out our Issues tab
 
 ### Non-technical
 You can help populate our name banks. In particular, our name 'decorators' such as titles, etc. could use some additional words. Have a look around the name-segments folder for what you can contribute to
@@ -22,7 +27,7 @@ We also would love your input on the formation of names.
 > Trueaxe. Blackmountain. Fasthammer.
 
 ### Technical
-We are editing the core right now, so any core generation code is not a stable place to start, but any issues in https://github.com/Mimic-Tools/name-generation/issues are fair game! Additionally, any standalone scripts!
+We are editing the core right now, so any core generation code is not a stable place to start, unless otherwise stated, but any issues in https://github.com/Mimic-Tools/name-generation/issues are fair game! Additionally, any standalone scripts!
 
 ## Hurdles
 Our project is evolving and while we wish our final product to be as inclusive as possible for all valid configurations, we will be starting at a simple base.
@@ -42,3 +47,5 @@ Finally comply with our file naming and style conventions.
 
 We're currently trying to make this more accessible, but for now the way to run is:
 > python3 generate.py
+
+For all available configurable options, add --help
