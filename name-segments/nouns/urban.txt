@@ -1,0 +1,9 @@
+smoke
+alley
+street
+coin
+cash
+market
+city
+castle
+dragon
