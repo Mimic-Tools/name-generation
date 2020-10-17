@@ -38,3 +38,14 @@ boat
 treasure
 deck
 hull
+coral
+marina
+wai
+mist
+storm
+steam
+flux
+gale
+current
+whirl
+gyre
