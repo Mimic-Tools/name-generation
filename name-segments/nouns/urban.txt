@@ -1,5 +1,9 @@
-metropolitan
-metro
+smoke
+alley
+street
+coin
+cash
+market
 city
 Castle
 Dragon
