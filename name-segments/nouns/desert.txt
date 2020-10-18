@@ -23,3 +23,16 @@ badlands
 wilderness
 savanna
 cobra
+heat
+thirst
+ground
+waste
+void
+abyss
+zero
+zot
+obilivion
+drought
+sandhill
+heath
+heathland
