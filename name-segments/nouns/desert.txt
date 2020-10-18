@@ -27,12 +27,9 @@ heat
 thirst
 ground
 waste
-void
-abyss
-zero
-zot
-obilivion
+snake
+scorpion
+lizard
 drought
-sandhill
+dune
 heath
-heathland
