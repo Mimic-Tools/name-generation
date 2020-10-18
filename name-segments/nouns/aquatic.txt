@@ -40,7 +40,7 @@ deck
 hull
 coral
 marina
-wai
+wave
 mist
 storm
 steam
