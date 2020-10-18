@@ -4,12 +4,41 @@ from random import choice
 import re
 from enum import Enum, auto
 from argparse import ArgumentParser
+from os import listdir
+from os.path import isfile, join
 
 class EnumAutoName(Enum):
     # An enum where auto() will default to the enum name
     def _generate_next_value_(name, start, count, last_values):
         return name
-            
+
+    def __str__(self):
+        return self.value
+    
+def get_available_namebanks(where="forenames"):
+    path = "name-segments/"+where
+    onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+    available = {}
+    for f in onlyfiles:
+        f = f.replace(".txt","")
+        f = f.replace("-female","")
+        f = f.replace("-male","")
+        f = f.capitalize()
+        available[f] = auto()
+    return available
+
+def get_available_origins(where="nouns"):
+    path = "name-segments/"+where
+    onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+    available = {}
+    for f in onlyfiles:
+        f = f.replace(".txt","")
+        f = f.replace("-female","")
+        f = f.replace("-male","")
+        f = f.capitalize()
+        available[f] = auto()
+    return available
+
 class Name:
     class NameOrder(EnumAutoName):
         Eastern = auto()
@@ -17,16 +46,11 @@ class Name:
         Surname_Only = auto()
         Western = "Western"
         
-    class NameBank(EnumAutoName):
-        American = auto()
-        Dwarf = auto()
-        Elf = auto()
-        French = auto()
-        Gaelic = auto()
-        Germanic = auto()
-        Orc = auto()
-        Portuguese = auto()
-        Triton = auto()
+    namebank_values = get_available_namebanks()
+    NameBank = EnumAutoName('NameBank', namebank_values)
+
+    origin_values = get_available_origins()
+    Origin = EnumAutoName('Origin', origin_values)
         
     class NameType(EnumAutoName):
         Forename = auto()
@@ -178,8 +202,6 @@ class Grammar:
                 s += f"{v}{sep}"
             s += "\n"
                 
-        #print("Grammar")
-        #print(s)
         self.string_repr = s
         f = open(filename, "w")
         f.write(s)
@@ -217,7 +239,7 @@ def resolve_grammar(G):
                     seperator = "|" if i > 0 else ""
                     s += f"{seperator} '{t}' "       
         except FileNotFoundError:
-            print("Warn: File doesn't exist:", filename)
+            print("Warn/Err: File doesn't exist:", filename, ". May produce bad name")
             s = ""
         return s
 

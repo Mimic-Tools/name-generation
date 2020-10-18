@@ -23,3 +23,13 @@ badlands
 wilderness
 savanna
 cobra
+heat
+thirst
+ground
+waste
+snake
+scorpion
+lizard
+drought
+dune
+heath
