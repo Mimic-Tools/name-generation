@@ -42,3 +42,4 @@ crevasse
 fissure
 ore
 mineral
+stone
