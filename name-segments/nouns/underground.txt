@@ -40,3 +40,5 @@ mantle
 core
 crevasse
 fissure
+ore
+mineral

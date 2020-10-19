@@ -39,3 +39,7 @@ honey
 rubber
 conifer
 fern
+stone
+trunk
+stump
+oak

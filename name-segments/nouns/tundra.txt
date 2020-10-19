@@ -31,3 +31,5 @@ bison
 moose
 inuit
 eskimo
+spruce
+podzol
