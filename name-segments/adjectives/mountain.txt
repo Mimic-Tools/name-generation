@@ -2,7 +2,6 @@ black
 brown
 red
 frost
-snow
 gold
 true
 bushy
@@ -11,3 +10,4 @@ fast
 silver
 hard
 tough
+golden
