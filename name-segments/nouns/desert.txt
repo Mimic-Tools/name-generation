@@ -37,3 +37,5 @@ mesa
 shade
 palm
 sweat
+scorch
+sizzle
