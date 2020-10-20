@@ -1,3 +1,4 @@
+import csv
 from os import listdir
 from os.path import isfile, join, splitext
 
@@ -6,6 +7,9 @@ prefix = 'name-segments'
 list_of_folders = ['nouns', 'adjectives', 'postfixes']
 report_headers = ['Noun', "Adj", "Postfix"]
 report_name = "availability_report.html"
+csv_name = "availability_report.csv"
+check = u'\u2713'
+cross = u'\u2715'
 
 print(f"\nBuilding initial list of regions to check for")
 report_items = []
@@ -25,20 +29,31 @@ for items in report_items:
 print(f"\nAvailability list created. Outputting report")
 
 html_output = """<html><table border="1"><tr><th>Region</th>"""
+csv_output = [['Region'] +  report_headers]
 for items in report_headers:
     html_output += "<th>{}</th>".format(items)
 html_output += """</tr>"""
 for report_item in report_dictionary:
-    html_output += "<tr><td>{}</td>".format(splitext(report_item)[0].capitalize())
-    for location in report_dictionary[report_item]:
+    region = splitext(report_item)[0].capitalize()
+    csv_row = [region]
+    html_output += "<tr><td>{}</td>".format(region)
+    for location in report_dictionary[report_item]: 
         if report_dictionary[report_item][location]:
-            html_output += "<td>{}</td>".format(u'\u2713')
+            html_output += "<td>{}</td>".format(check)
+            csv_row += [check]
         else:
-            html_output += "<td>X</td>"
+            html_output += "<td>{}</td>".format(cross)
+            csv_row += [cross]    
+    csv_output.append(csv_row)        
     html_output += "</tr>"
 html_output += "</table></html>"
+
+csv_file = open(csv_name, 'w', newline='', encoding='utf-8')
+csv_writer = csv.writer(csv_file)
+csv_writer.writerows(csv_output)
+csv_file.close()
 
 html_file = open(report_name, "w", encoding="utf-8")
 html_file.write(html_output)
 html_file.close()
-print(f"\n.Report Generated.")
+print(f"\n.Reports Generated.")
