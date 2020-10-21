@@ -1,5 +1,4 @@
 abysmal
-amazonian
 austere
 autumnal
 bushy
@@ -40,7 +39,7 @@ sylvan
 sombre
 tangled
 tranquil
-terrestial
+terrestrial
 treacherous
 unexplored
 unbroken
@@ -48,4 +47,3 @@ vast
 vernal
 vibrant
 wildy
-woodsy
