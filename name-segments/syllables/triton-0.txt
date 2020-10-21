@@ -9,6 +9,7 @@ Jhi
 Li
 Ker
 Mol
+Moz
 Nal
 Shal
 Oth
@@ -16,3 +17,4 @@ Vod
 Vlar
 Whol
 Zun
+Zol
