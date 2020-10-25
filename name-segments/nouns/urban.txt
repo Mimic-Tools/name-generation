@@ -68,7 +68,3 @@ car
 pedal
 light
 queue
-
-
-
-
