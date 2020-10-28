@@ -33,3 +33,9 @@ lizard
 drought
 dune
 heath
+mesa
+shade
+palm
+sweat
+scorch
+sizzle

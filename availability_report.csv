@@ -1,0 +1,9 @@
+Region,Noun,Adj,Postfix
+Urban,✓,✕,✓
+Forest,✓,✕,✓
+Mountain,✓,✓,✓
+Desert,✓,✓,✓
+Tundra,✓,✓,✓
+Aquatic,✓,✕,✓
+Underground,✓,✕,✕
+Air,✓,✕,✓

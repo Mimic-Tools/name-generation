@@ -49,3 +49,12 @@ gale
 current
 whirl
 gyre
+kelp
+trench
+siren
+coast
+isle
+drain
+flow
+puddle
+vapor

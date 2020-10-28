@@ -13,3 +13,4 @@ arid
 icy
 frigid 
 polar
+wild
