@@ -2,3 +2,15 @@ light
 fast
 calm
 swift
+fresh
+clear
+open
+cold
+pure
+warm
+mild
+crisp
+balmy
+sharp
+dry
+humid
