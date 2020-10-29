@@ -13,3 +13,6 @@ cloud
 coal
 steam
 sweat
+sulphur
+brimstone
+glass
