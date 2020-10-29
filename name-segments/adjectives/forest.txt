@@ -2,10 +2,12 @@ abysmal
 austere
 autumnal
 bushy
+black
 craggy
 dainty
 dark
 dense
+dismal
 dreary 
 dusky
 earthy 
@@ -13,7 +15,7 @@ endless
 fresh
 floral
 gaunt
-greenly
+green
 gigantic
 gloomy
 grotesque
@@ -32,12 +34,15 @@ savage
 scarlet
 scented
 serene
+silent
 slender
 slippery
 solitary
+sombre
 sylvan
 sombre
 tangled
+thick
 tranquil
 terrestrial
 treacherous
@@ -47,3 +52,4 @@ vast
 vernal
 vibrant
 wildy
+wide
