@@ -24,3 +24,4 @@ cliff
 bluff
 peak
 ridge
+fog
