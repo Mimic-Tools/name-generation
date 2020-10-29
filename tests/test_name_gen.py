@@ -1,11 +1,13 @@
 import pytest
 from ..generate import generate, Name
 
+
 class Mock():
     def __init__(self):
         pass
 
-def test_generate_name(
+
+def test_generate_name():
     a = Mock()
     a.gender_male = True
     a.gender_female = True
