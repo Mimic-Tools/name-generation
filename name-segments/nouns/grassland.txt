@@ -1,0 +1,9 @@
+field
+track
+dirt
+mouse
+rat
+crop
+corn
+scrub
+bush
