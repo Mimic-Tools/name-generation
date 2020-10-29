@@ -11,3 +11,9 @@ quiet
 swift
 smooth
 mild
+wild
+burning
+golden
+yellow
+orange
+bare
