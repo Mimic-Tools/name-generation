@@ -1,0 +1,13 @@
+lava
+volcano
+crater
+chimney
+tunnel
+flare
+fire
+flame
+boulder
+lake
+ash
+cloud
+coal
