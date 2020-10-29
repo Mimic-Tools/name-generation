@@ -11,3 +11,5 @@ lake
 ash
 cloud
 coal
+steam
+sweat
