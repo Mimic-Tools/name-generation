@@ -1,5 +1,6 @@
-import pytest
-from ..generate import generate, Name
+import sys
+sys.path.append("..")
+from generate import generate, Name
 
 
 class Mock():
