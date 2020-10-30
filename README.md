@@ -27,7 +27,7 @@ There are several places where non-technical help is appreciated:
  - Adding regional based names.
  - Adding Nouns/Adjectives for Surname generation based on region
  - Adding Syllables for Forename generation for fantasy races.
- 
+
 All of these are located in different folders underneath the "name-segments" folder.
 
 We also would love your input on the formation of names. 
@@ -54,6 +54,8 @@ Finally comply with our file naming and style conventions.
 ## Running the Name Generation
 
 We're currently trying to make this more accessible, but for now the way to run is:
+> cd src/name_generation/
+>
 > python3 generate.py
 
 For all available configurable options, add --help

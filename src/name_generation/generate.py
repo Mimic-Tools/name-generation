@@ -6,6 +6,10 @@ from enum import Enum, auto
 from argparse import ArgumentParser
 from os import listdir
 from os.path import isfile, join
+import os
+
+this_dir = os.path.dirname(os.path.abspath(__file__))
+name_segment_folder = join(this_dir, "../../name-segments/")
 
 class EnumAutoName(Enum):
     # An enum where auto() will default to the enum name
@@ -23,7 +27,8 @@ def get_available_namebanks_and_syllables():
 
     
 def get_available_syllables(where="syllables"):
-    path = "name-segments/"+where
+    global name_segment_folder
+    path = join(name_segment_folder,where)
     onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
     available = {}
     for f in onlyfiles:
@@ -37,7 +42,8 @@ def get_available_syllables(where="syllables"):
     return available
 
 def get_available_namebanks(where="forenames"):
-    path = "name-segments/"+where
+    global name_segment_folder
+    path = join(name_segment_folder,where)
     onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
     available = {}
     for f in onlyfiles:
@@ -49,7 +55,8 @@ def get_available_namebanks(where="forenames"):
     return available
 
 def get_available_origins(where="nouns"):
-    path = "name-segments/"+where
+    global name_segment_folder
+    path = join(name_segment_folder,where)
     onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
     available = {}
     for f in onlyfiles:
@@ -122,7 +129,8 @@ class FileFetcher():
         return pt
 
     def SyllableLength(self, namebank):
-        path = "name-segments/syllables"
+        global name_segment_folder
+        path = join(name_segment_folder,"syllables")
         onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
         unique_syllables = {}
         for f in onlyfiles:
@@ -187,6 +195,8 @@ class Grammar:
         namebank = config.namebank.name.lower()
         name_type = name_type.name.upper()
 
+        global name_segment_folder
+
         # TODO: Check compatibile with namebanks
         syls = self.ff.SyllableLength(namebank)
         self.obj[name_type] = []
@@ -197,8 +207,11 @@ class Grammar:
             pt = []
             for g in ges:
                 g = f"-{g}" if g != "" else g
-                # TODO: s shouldnt be there.
-                pt.append(f'syllables/{namebank}{g}-{x}.txt')
+                f = f'syllables/{namebank}{g}-{x}.txt'
+                if os.path.exists(join(name_segment_folder, f)):
+                    pt.append(f)
+                else:
+                    print(f"Warn/Err: No syllable file found: {f}. May produce bad name.")
             self.obj[f"SYLLABLE{x}"] = [pt]
 
 
@@ -241,7 +254,6 @@ class Grammar:
         self.obj["NOUN"] = pt
         
         
-
     def write(self, filename="custom.grammar"):
         # TODO: order carefully
         s = ""
@@ -287,7 +299,9 @@ def define_grammar(config):
 
 def resolve_grammar(G):
     def file_contents(s):
-        filename = f"name-segments/{s.group(1)}"
+        global name_segment_folder
+        filename = join(name_segment_folder,str(s.group(1)))
+
         try:
             terms = open(filename).readlines()
             s = ""
@@ -302,7 +316,7 @@ def resolve_grammar(G):
             s = ""
         return s
 
-    G = re.sub("\[\'([a-zA-Z\-\.\/0-9]*)\'\]", file_contents, G)
+    G = re.sub(r"\[\'([a-zA-Z\-\.\/0-9]*)\'\]", file_contents, G)
     return G
 
 def generate_name(G):
