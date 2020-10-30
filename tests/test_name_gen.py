@@ -1,7 +1,6 @@
 import sys
-sys.path.append("../")
+sys.path.insert(1, '../src/name_generation')
 from src.name_generation.generate import generate, Name
-
 
 class Mock():
     def __init__(self):
