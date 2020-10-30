@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 ../generate.py --origin Aquatic --namebank Triton
+python3 ../src/name_generation/generate.py --origin Aquatic --namebank Triton
