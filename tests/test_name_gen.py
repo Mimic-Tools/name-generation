@@ -1,8 +1,8 @@
 import sys
 import os
 fp = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(1, os.path.join(fp, '../src/name_generation'))
-from src.name_generation.generate import generate, Name
+sys.path.insert(1, os.path.join(fp, '../src/'))
+from name_generation.generate import generate, Name
 
 class Mock():
     def __init__(self):
