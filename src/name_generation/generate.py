@@ -19,6 +19,15 @@ class EnumAutoName(Enum):
     def __str__(self):
         return self.value
 
+def get_files_from_path(path, extension_filter=".txt"):
+    files = []
+    for f in listdir(path):
+        full_f = join(path, f)
+        if extension_filter in full_f:
+            if isfile(full_f):
+                files.append(f)
+    return files
+
 def get_available_namebanks_and_syllables():
     namebanks = get_available_namebanks()
     syllables = get_available_syllables()
@@ -29,7 +38,7 @@ def get_available_namebanks_and_syllables():
 def get_available_syllables(where="syllables"):
     global name_segment_folder
     path = join(name_segment_folder,where)
-    onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+    onlyfiles = get_files_from_path(path)
     available = {}
     for f in onlyfiles:
         f = f.replace(".txt","")
@@ -44,7 +53,7 @@ def get_available_syllables(where="syllables"):
 def get_available_namebanks(where="forenames"):
     global name_segment_folder
     path = join(name_segment_folder,where)
-    onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+    onlyfiles = get_files_from_path(path)
     available = {}
     for f in onlyfiles:
         f = f.replace(".txt","")
@@ -57,7 +66,7 @@ def get_available_namebanks(where="forenames"):
 def get_available_origins(where="nouns"):
     global name_segment_folder
     path = join(name_segment_folder,where)
-    onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+    onlyfiles = get_files_from_path(path)
     available = {}
     for f in onlyfiles:
         f = f.replace(".txt","")
@@ -131,7 +140,7 @@ class FileFetcher():
     def SyllableLength(self, namebank):
         global name_segment_folder
         path = join(name_segment_folder,"syllables")
-        onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+        onlyfiles = get_files_from_path(path)
         unique_syllables = {}
         for f in onlyfiles:
             if namebank in f:
