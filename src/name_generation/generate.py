@@ -19,6 +19,12 @@ class EnumAutoName(Enum):
     def __str__(self):
         return self.value
 
+def StringToEnum(s):
+    if s in [v.name for v in Name.NameBank]:
+        return Name.NameBank[s]
+    else:
+        raise ValueError
+
 def get_files_from_path(path, extension_filter=".txt"):
     files = []
     for f in listdir(path):
@@ -364,7 +370,9 @@ def generate(args):
     G = resolve_grammar(open(grammar_file).read())
     name = generate_name(G)
 
-    print("Your Character:", name)
+    if args.verbose:
+        print("Your Character:", name)
+    return name
 
 def parse_args():
     ap = ArgumentParser(description="Generate a character name")
@@ -379,6 +387,7 @@ def parse_args():
     ap.add_argument('--origin', type=Name.Origin, choices=list(Name.Origin), nargs="?", default=Name.Origin.Mountain)
     ap.add_argument('--namebank', type=Name.NameBank, choices=Name.NameBank, nargs="?", default=Name.NameBank.Dwarf)
     args = ap.parse_args()
+    args.verbose = True
     return args
     
 

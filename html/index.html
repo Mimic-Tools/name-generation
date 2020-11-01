@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Name</title>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"> 
+    <script>
+        function SubmitNameGenerationForm(){
+            console.log("Write Code here to submit to your backend via ajax.")
+        }
+        function collapse_tab(that){
+            $(that).nextAll().toggle()
+            triangle = $(that).children(".collapse-icon")
+            triangle.text(triangle.text() == "▼" ? "▲" : "▼")
+            // ▲
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -13,9 +24,10 @@
     </header>
     <section>
         <div class="container">
-            <form class="form-generation"  action="#" method="get" name="generation">
+            <form id="form-id" class="form-generation"  action="#" method="post" name="generation">{% csrf_token %}
+                {{ form.as_p }}
                 <div class="form-group">
-                    <label class="form-item-title">Gender</label>
+                    <a class="collapse_link" onclick="collapse_tab(this)"><label class="form-item-title">Gender</label> <span class="collapse-icon">▼</span> </a>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gender1" value="Male" name="gender">
                         <label class="form-check-label" for="gender1">Male</label>
@@ -30,7 +42,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-item-title" for="name-style">Name Style</label>
+                    <a class="collapse_link" onclick="collapse_tab(this)"><label class="form-item-title">Name Style</label> <span class="collapse-icon">▼</span> </a>
                     <select class="form-control" id="name-style"> 
                         <option hidden>Select</option>
                         <option>Western (Fore-Sur)</option>
@@ -39,7 +51,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-item-title">Real-World Origins</label>
+                    <a class="collapse_link" onclick="collapse_tab(this)"><label class="form-item-title">Real-World Origins</label> <span class="collapse-icon">▼</span> </a>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="origins1" value="British" name="origins">
                         <label class="form-check-label" for="origins1">British</label>
@@ -66,7 +79,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-item-title" for="aliases">Aliases</label>
+                    <a class="collapse_link" onclick="collapse_tab(this)"><label class="form-item-title">Aliases</label> <span class="collapse-icon">▼</span> </a>
                     <select class="form-control" id="aliases"> 
                         <option hidden>Select</option>
                         <option>Known As (Fore "The Nick" Sur)</option>
@@ -74,7 +87,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-item-title">Birth Location</label>
+                    <a class="collapse_link" onclick="collapse_tab(this)"><label class="form-item-title">Birth Location</label> <span class="collapse-icon">▼</span> </a>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="location1" value="Mountain/Cave" name="location">
                         <label class="form-check-label" for="location1">Mountain/Cave</label>
@@ -101,7 +115,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-item-title">Position</label>
+                    <a class="collapse_link" onclick="collapse_tab(this)"><label class="form-item-title">Position</label> <span class="collapse-icon">▼</span> </a>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="position1" value="Noble" name="position">
                         <label class="form-check-label" for="position1">Noble</label>
@@ -116,10 +131,15 @@
                     </div>
                 </div> 
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <a id="ng_button" onclick="SubmitNameGenerationForm()" href="javascript:void(0);">Submit</a>
+                    <!-- <input type="submit" value="Submit Feedback" />
+                    <button class="btn btn-primary" type="submit">Submit form</button> -->
                 </div>   
                 <div class="form-group">
-                    <h3 class="result-title">Your Character is: <span class="result-generation"></span></h3>
+                    <h3 class="result-title">Character Names:</h3>
+                    <div id="result-list">
+                        <span id="namegen_results" class="result-generation">...</span>
+                    </div>
                 </div>            
             </form>
         </div>
