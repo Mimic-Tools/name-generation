@@ -147,3 +147,18 @@ select.form-control:not([size]):not([multiple]) {
 .result-title {
     font-style: italic;
 }
+
+.collapse_link{
+    color: #484848 !important;
+}
+
+#ng_button{
+    background-color: #1474bf;
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#ng_button:hover {
+  background-color: #54a0dc;
+}
