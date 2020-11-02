@@ -32,7 +32,7 @@ def find_gender_availability(search_folder, rows):
                 filename = r.split(".txt")[0] + gender + ".txt"
             else:
                 filename = r
-            report_dictionary[items] = {}
+            report_dictionary[gender] = {}
             print(f"Checking for {filename} file")
             for item in search_folder:
                 report_dictionary[gender][item] = isfile(join(join(prefix, item), filename))
