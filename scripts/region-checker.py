@@ -12,7 +12,7 @@ def get_report_rows(search_folders):
 
     for item in [join(prefix, item) for item in search_folders]:
         for f in listdir(item):
-            if isfile(join(item, f) and f.endswith(".txt") and "-male" not in f and "-female" not in f:
+            if isfile(join(item, f)) and f.endswith(".txt") and "-male" not in f and "-female" not in f:
                 report_items += f
     report_items = list(set(report_items))
     return report_items
@@ -84,4 +84,3 @@ if __name__ == "__main__":
     rows = get_report_rows(list_of_folders)
     d = find_gender_availability(list_of_folders, rows)
     generate_reports(d, ['Neutral', "Male", "Female"], title="Syllables", name="syllable_report")
-    
