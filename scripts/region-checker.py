@@ -11,7 +11,9 @@ def get_report_rows(search_folders):
     report_items = []
 
     for item in [join(prefix, item) for item in search_folders]:
-        report_items += [f for f in listdir(item) if isfile(join(item, f)) and f.endswith('.txt')]
+        for f in listdir(item):
+            if isfile(join(item, f) and f.endswith(".txt") and "-male" not in f and "-female" not in f:
+                report_items += f
     report_items = list(set(report_items))
     return report_items
 
@@ -29,7 +31,7 @@ def find_gender_availability(search_folder, rows):
     for r in rows:
         for gender in ["male", "female", "neutral"]:
             if gender in ["male", "female"]:
-                filename = r.split(".txt")[0] + gender + ".txt"
+                filename = r.split(".txt")[0] + f"-{gender}.txt"
             else:
                 filename = r
             report_dictionary[gender] = {}
@@ -38,11 +40,10 @@ def find_gender_availability(search_folder, rows):
                 report_dictionary[gender][item] = isfile(join(join(prefix, item), filename))
     return report_dictionary
 
-def generate_reports(entries, title="Region", name="region_report"):
+def generate_reports(entries, report_headers, title="Region", name="region_report"):
     report_name = f"{name}.html"
     csv_name = f"{name}.csv"
 
-    report_headers = ['Noun', "Adj", "Postfix"]
     html_output = f"""<html><table border="1"><tr><th>{title}</th>"""
     csv_output = [[f'{title}'] +  report_headers]
     for items in report_headers:
@@ -77,10 +78,10 @@ if __name__ == "__main__":
     list_of_folders = ['nouns', 'adjectives', 'postfixes']
     rows = get_report_rows(list_of_folders)
     d = find_availability(list_of_folders, rows)
-    generate_reports(d)
+    generate_reports(d, ["Noun", "Adj", "Postfix"])
     
     list_of_folders = ['syllables']
     rows = get_report_rows(list_of_folders)
     d = find_gender_availability(list_of_folders, rows)
-    generate_reports(d, title="Syllables", name="syllable_report")
+    generate_reports(d, ['Neutral', "Male", "Female"], title="Syllables", name="syllable_report")
     
