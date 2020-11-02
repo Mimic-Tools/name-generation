@@ -1,6 +1,6 @@
 # Mimic Tools' Character Name Generation
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mimic-Tools/name-generation)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mimic-Tools/name-generation) ![Python Tests](https://github.com/Mimic-Tools/name-generation/workflows/Python%20application/badge.svg)
 
 A tool to generate character names for your RPGs, Novel or any sort of character creation.
 
