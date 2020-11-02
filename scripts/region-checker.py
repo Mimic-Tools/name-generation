@@ -31,18 +31,18 @@ print(f"\nAvailability list created. Outputting report")
 html_output = """<html><table border="1"><tr><th>Region</th>"""
 csv_output = [['Region'] +  report_headers]
 for items in report_headers:
-    html_output += "<th>{}</th>".format(items)
+    html_output += f"<th>{items}</th>"
 html_output += """</tr>"""
 for report_item in report_dictionary:
     region = splitext(report_item)[0].capitalize()
     csv_row = [region]
-    html_output += "<tr><td>{}</td>".format(region)
+    html_output += f"<tr><td>{region}</td>"
     for location in report_dictionary[report_item]: 
         if report_dictionary[report_item][location]:
-            html_output += "<td>{}</td>".format(check)
+            html_output += f"<td>{check}</td>"
             csv_row += [check]
         else:
-            html_output += "<td>{}</td>".format(cross)
+            html_output += f"<td>{cross}</td>"
             csv_row += [cross]    
     csv_output.append(csv_row)        
     html_output += "</tr>"
