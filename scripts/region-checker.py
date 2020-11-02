@@ -12,8 +12,9 @@ def get_report_rows(search_folders):
 
     for item in [join(prefix, item) for item in search_folders]:
         for f in listdir(item):
-            if isfile(join(item, f)) and f.endswith(".txt") and "-male" not in f and "-female" not in f:
-                report_items += f
+            if isfile(join(item, f)) and f.endswith(".txt"):
+                if "-male" not in f and "-female" not in f:
+                    report_items.append(f)
     report_items = list(set(report_items))
     return report_items
 
