@@ -20,7 +20,7 @@ def find_availability(search_folder, rows):
     for items in rows:
         report_dictionary[items] = {}
         print(f"Checking for {items} files")
-        for item in list_of_folders:
+        for item in search_folder:
             report_dictionary[items][item] = isfile(join(join(prefix, item), items))
     return report_dictionary
 
@@ -64,3 +64,9 @@ if __name__ == "__main__":
     rows = get_report_rows(list_of_folders)
     d = find_availability(list_of_folders, rows)
     generate_reports(d)
+    
+    list_of_folders = ['syllables']
+    rows = get_report_rows(list_of_folders)
+    d = find_availability(list_of_folders, rows)
+    generate_reports(d)
+    
