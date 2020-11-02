@@ -34,3 +34,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Run Region Test
+      run: |
+        python scripts/region-checker.py
+        cat availability_report.csv | perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' | column -t -s, | less -S
