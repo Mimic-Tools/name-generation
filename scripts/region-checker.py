@@ -24,7 +24,21 @@ def find_availability(search_folder, rows):
             report_dictionary[items][item] = isfile(join(join(prefix, item), items))
     return report_dictionary
 
-def generate_reports(entries, title="Region", name="availability_report"):
+def find_gender_availability(search_folder, rows):
+    report_dictionary = {}
+    for r in rows:
+        for gender in ["male", "female", "neutral"]:
+            if gender in ["male", "female"]:
+                filename = r.split(".txt")[0] + gender + ".txt"
+            else:
+                filename = r
+            report_dictionary[items] = {}
+            print(f"Checking for {filename} file")
+            for item in search_folder:
+                report_dictionary[gender][item] = isfile(join(join(prefix, item), filename))
+    return report_dictionary
+
+def generate_reports(entries, title="Region", name="region_report"):
     report_name = f"{name}.html"
     csv_name = f"{name}.csv"
 
@@ -67,6 +81,6 @@ if __name__ == "__main__":
     
     list_of_folders = ['syllables']
     rows = get_report_rows(list_of_folders)
-    d = find_availability(list_of_folders, rows)
-    generate_reports(d)
+    d = find_gender_availability(list_of_folders, rows)
+    generate_reports(d, title="Syllables", name="syllable_report")
     
