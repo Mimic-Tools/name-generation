@@ -36,8 +36,6 @@ def find_gender_availability(search_folder, rows):
             for gender in ["Neutral", "Male", "Female"]:          
                 if gender in ["Male", "Female"]:
                     filename = r.split(".txt")[0] + f"-{gender.lower()}.txt"
-                    filename = filename.replace("-0","")
-                    filename = filename.replace("-1","")
                 else:
                     filename = r
                 report_dictionary[items][filename] = isfile(join(join(prefix, filename), items))
