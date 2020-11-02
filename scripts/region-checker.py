@@ -32,13 +32,13 @@ def find_gender_availability(search_folder, rows):
     for items in rows:
         report_dictionary[items] = {}
         print(f"Checking for {items} files")
-        # for item in search_folder:
-        for gender in ["male", "female", "neutral"]:          
-            if gender in ["male", "female"]:
-                filename = r.split(".txt")[0] + f"-{gender}.txt"
-            else:
-                filename = r
-            report_dictionary[items][filename] = isfile(join(join(prefix, filename), items))
+        for r in search_folder:
+            for gender in ["male", "female", "neutral"]:          
+                if gender in ["male", "female"]:
+                    filename = r.split(".txt")[0] + f"-{gender}.txt"
+                else:
+                    filename = r
+                report_dictionary[items][filename] = isfile(join(join(prefix, filename), items))
     return report_dictionary
 
 def generate_reports(entries, report_headers, title="Region", name="region_report"):
