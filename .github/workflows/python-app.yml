@@ -37,3 +37,4 @@ jobs:
     - name: Run Region Test
       run: |
         python scripts/region-checker.py
+        cat availability_report.csv | perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' | column -t -s, | less -S
