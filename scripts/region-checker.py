@@ -50,7 +50,7 @@ def generate_reports(entries, report_headers, title="Region", name="region_repor
     for items in report_headers:
         html_output += f"<th>{items}</th>"
     html_output += """</tr>"""
-    for report_item in entries:
+    for report_item in sorted (entries):
         region = splitext(report_item)[0].capitalize()
         csv_row = [region]
         html_output += f"<tr><td>{region}</td>"
