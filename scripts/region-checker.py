@@ -4,8 +4,8 @@ from os.path import isfile, join, splitext
 
 # main configuration items
 prefix = 'name-segments'
-check = u'\u2713'
-cross = u'\u2715'
+check = u'\033[92m\u2713\033[0m'
+cross = u'\033[91m\u2715\033[0m'
 
 def get_report_rows(search_folders):
     report_items = []
@@ -24,7 +24,9 @@ def find_availability(search_folder, rows):
         report_dictionary[items] = {}
         print(f"Checking for {items} files")
         for item in search_folder:
-            report_dictionary[items][item] = isfile(join(join(prefix, item), items))
+            f = join(join(prefix, item), items)
+            report_dictionary[items][item] = False if not isfile(f) else sum(1 for line in open(f))
+
     return report_dictionary
 
 def find_gender_availability(search_folder, rows):
@@ -38,7 +40,9 @@ def find_gender_availability(search_folder, rows):
                     filename = r.split(".txt")[0] + f"-{gender.lower()}.txt"
                 else:
                     filename = r
-                report_dictionary[items][filename] = isfile(join(join(prefix, filename), items))
+                    
+                f = join(join(prefix, filename), items)
+                report_dictionary[items][filename] = False if not isfile(f) else sum(1 for line in open(f))
     return report_dictionary
 
 def generate_reports(entries, report_headers, title="Region", name="region_report"):
@@ -55,9 +59,14 @@ def generate_reports(entries, report_headers, title="Region", name="region_repor
         csv_row = [region]
         html_output += f"<tr><td>{region}</td>"
         for location in entries[report_item]: 
-            if entries[report_item][location]:
-                html_output += f"<td>{check}</td>"
-                csv_row += [check]
+            n_entries = entries[report_item][location]
+            if n_entries:
+                chk = check
+                chk = chk.replace("\u2713", str(n_entries))
+                if n_entries < 10:
+                    chk = chk.replace("[92m", "[93m")
+                html_output += f"<td>{chk}</td>"
+                csv_row += [chk]
             else:
                 html_output += f"<td>{cross}</td>"
                 csv_row += [cross]    
