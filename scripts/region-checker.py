@@ -24,7 +24,9 @@ def find_availability(search_folder, rows):
         report_dictionary[items] = {}
         print(f"Checking for {items} files")
         for item in search_folder:
-            report_dictionary[items][item] = isfile(join(join(prefix, item), items))
+            f = join(join(prefix, item), items)
+            report_dictionary[items][item] = False if not isfile(f) else sum(1 for line in open(f))
+
     return report_dictionary
 
 def find_gender_availability(search_folder, rows):
