@@ -1,0 +1,11 @@
+busy
+smokey
+dense
+poor
+dirty
+free
+rich
+large
+loud
+noisy
+quiet
