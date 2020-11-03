@@ -57,7 +57,7 @@ def generate_reports(entries, report_headers, title="Region", name="region_repor
         for location in entries[report_item]: 
             if entries[report_item][location]:
                 chk = check
-                chk.replace("\u2713", str(entries[report_item][location]))
+                chk = chk.replace("\u2713", str(entries[report_item][location]))
                 html_output += f"<td>{chk}</td>"
                 csv_row += [chk]
             else:
