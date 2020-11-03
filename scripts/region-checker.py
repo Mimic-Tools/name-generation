@@ -5,7 +5,7 @@ from os.path import isfile, join, splitext
 # main configuration items
 prefix = 'name-segments'
 check = u'\033[92m\u2713\033[0m'
-cross = u'\u2715'
+cross = u'\033[91m\u2715\033[0m'
 
 def get_report_rows(search_folders):
     report_items = []
@@ -56,6 +56,8 @@ def generate_reports(entries, report_headers, title="Region", name="region_repor
         html_output += f"<tr><td>{region}</td>"
         for location in entries[report_item]: 
             if entries[report_item][location]:
+                chk = check
+                chk.replace("\u2713", str(entries[report_item][location]))
                 html_output += f"<td>{check}</td>"
                 csv_row += [check]
             else:
