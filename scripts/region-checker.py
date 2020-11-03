@@ -57,9 +57,12 @@ def generate_reports(entries, report_headers, title="Region", name="region_repor
         csv_row = [region]
         html_output += f"<tr><td>{region}</td>"
         for location in entries[report_item]: 
-            if entries[report_item][location]:
+            n_entries = entries[report_item][location]
+            if n_entries:
                 chk = check
-                chk = chk.replace("\u2713", str(entries[report_item][location]))
+                chk = chk.replace("\u2713", str(n_entries))
+                if n_entries < 10:
+                    chk = chk.replace("[92m", "[93m")
                 html_output += f"<td>{chk}</td>"
                 csv_row += [chk]
             else:
