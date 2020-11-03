@@ -40,7 +40,9 @@ def find_gender_availability(search_folder, rows):
                     filename = r.split(".txt")[0] + f"-{gender.lower()}.txt"
                 else:
                     filename = r
-                report_dictionary[items][filename] = isfile(join(join(prefix, filename), items))
+                    
+                f = join(join(prefix, filename), items)
+                report_dictionary[items][filename] = False if not isfile(f) else sum(1 for line in open(f))
     return report_dictionary
 
 def generate_reports(entries, report_headers, title="Region", name="region_report"):
