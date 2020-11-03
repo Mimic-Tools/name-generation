@@ -58,8 +58,8 @@ def generate_reports(entries, report_headers, title="Region", name="region_repor
             if entries[report_item][location]:
                 chk = check
                 chk.replace("\u2713", str(entries[report_item][location]))
-                html_output += f"<td>{check}</td>"
-                csv_row += [check]
+                html_output += f"<td>{chk}</td>"
+                csv_row += [chk]
             else:
                 html_output += f"<td>{cross}</td>"
                 csv_row += [cross]    
