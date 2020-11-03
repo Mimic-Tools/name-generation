@@ -4,7 +4,7 @@ from os.path import isfile, join, splitext
 
 # main configuration items
 prefix = 'name-segments'
-check = u'\u2713'
+check = u'\033[92m\u2713\033[0m'
 cross = u'\u2715'
 
 def get_report_rows(search_folders):
