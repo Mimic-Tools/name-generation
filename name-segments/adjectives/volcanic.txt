@@ -10,3 +10,8 @@ crimson
 orange
 fresh
 piping
+warm
+spicy
+scalding
+baking
+roast
