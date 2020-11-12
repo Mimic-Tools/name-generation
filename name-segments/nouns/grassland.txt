@@ -7,3 +7,13 @@ crop
 corn
 scrub
 bush
+hill
+mound
+hoe
+spade
+sword
+foot
+fork
+hay
+horse
+shoe
