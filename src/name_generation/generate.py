@@ -269,7 +269,7 @@ class Grammar:
         self.obj["NOUN"] = pt
         
         
-    def write(self, filename="custom.grammar"):
+    def write(self, dir="", filename="custom.grammar"):
         # TODO: order carefully
         s = ""
         for key, value in self.obj.items():
@@ -282,9 +282,19 @@ class Grammar:
             s += "\n"
                 
         self.string_repr = s
+
+        filename = os.path.join(dir, filename)
+        print("---------------------")
+        print(filename)     
+        print(filename)     
+        print(filename)     
+        print(filename)     
+        print("---------------------")
+
         f = open(filename, "w")
         f.write(s)
         f.close()
+        filename = os.path.abspath(filename)
         return filename
 
     def __str__(self):
@@ -293,7 +303,7 @@ class Grammar:
         else:
             return "Not Finalized"
 
-def define_grammar(config):
+def define_grammar(config, where=""):
 
     grammar = Grammar(config)
     grammar.initialize()
@@ -310,7 +320,7 @@ def define_grammar(config):
     # TODO: Use namebank for Surnames
     grammar.constructName(config, Name.NameType.Surname)
     
-    return grammar.write()
+    return grammar.write(where)
 
 def resolve_grammar(G):
     def file_contents(s):
@@ -334,7 +344,7 @@ def resolve_grammar(G):
     G = re.sub(r"\[\'([a-zA-Z\-\.\/0-9]*)\'\]", file_contents, G)
     return G
 
-def generate_name(G):
+def generate_name(G, ):
     grammar = CFG.fromstring(G)    
 
     parser = ChartParser(grammar)
@@ -356,7 +366,7 @@ def produce(grammar, symbol):
     return words
 
 
-def generate(args):
+def generate(args, where=""):
     config = Name()
     config.has_position = True
     config.origin = args.origin
@@ -365,7 +375,7 @@ def generate(args):
     config.gender_male = args.gender_male
     config.gender_female = args.gender_female
     config.gender_neutral = args.gender_neutral
-    grammar_file = define_grammar(config)
+    grammar_file = define_grammar(config, where)
 
     G = resolve_grammar(open(grammar_file).read())
     name = generate_name(G)
