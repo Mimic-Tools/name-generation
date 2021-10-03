@@ -11,7 +11,8 @@ The best way to contribute is through *nouns* and *adjectives*. These elements w
 
 
 
-| Goldhammer | SilverArrow | GoldArrow | Silverhammer |      |
-| ---------- | ----------- | --------- | ------------ | ---- |
-|            |             |           |              |      |
+E.G
+Adjectives = [Gold, Silver]
+Nouns = [Hammer, Arrow]
 
+Results = [Goldhammer, Silverarrow, Goldarrow, Silverhammer]
