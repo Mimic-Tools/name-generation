@@ -1,11 +1,13 @@
 busy
-smokey
 dense
-poor
 dirty
 free
-rich
+grey
 large
 loud
 noisy
+poor
 quiet
+rich
+smokey
+vivid
