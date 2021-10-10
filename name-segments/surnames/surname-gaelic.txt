@@ -1,5 +1,6 @@
 Burke
 Byrne
+Doyle
 Gallagher
 Hughes
 Kelly
@@ -12,3 +13,4 @@ O'Connor
 O'Doherty
 O'Sullivan
 Ryan
+Walsh
